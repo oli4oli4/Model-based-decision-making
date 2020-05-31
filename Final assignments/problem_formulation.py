@@ -278,33 +278,31 @@ def get_model_for_problem_formulation(problem_formulation_id):
         variable_names_6 = []
         
         for n in function.planning_steps:
-            variable_names_1.extend(['{}_Expected Annual Damage {}'.format(dike, n) for dike in function.ring12_dikelist])
-            variable_names_2.extend(['{}_Expected Number of Deaths {}'.format(dike, n) for dike in function.ring12_dikelist])
-            variable_names_3.extend(['{}_Expected Annual Damage {}'.format(dike, n) for dike in function.ring3_dikelist])
-            variable_names_4.extend(['{}_Expected Number of Deaths {}'.format(dike, n) for dike in function.ring3_dikelist])
-            
-            variable_names_5.extend(['{}_Dike Investment Costs {}'.format(dike, n) for dike in function.gelderland_dikelist] 
-                                  + ['RfR Total Costs {}'.format(n)])
-
-            variable_names_6.extend(['{}_Expected Annual Damage {}'.format(dike, n)
-                                         for dike in function.dikelist])
-            variable_names_6.extend(['{}_Dike Investment Costs {}'.format(dike, n)
-                                      for dike in function.dikelist])
+            for dike in function.ring12_dikelist:
+                variable_names_1.extend(['{}_Expected Annual Damage {}'.format(dike, n)])
+                variable_names_2.extend(['{}_Expected Number of Deaths {}'.format(dike, n)])
+            for dike in function.ring3_dikelist:
+                variable_names_3.extend(['{}_Expected Annual Damage {}'.format(dike, n)])
+                variable_names_4.extend(['{}_Expected Number of Deaths {}'.format(dike, n)])            
+            for dike in function.dikelist:
+                variable_names_5.extend(['{}_Dike Investment Costs {}'.format(dike, n)])
+                variable_names_6.extend(['{}_Expected Annual Damage {}'.format(dike, n)])
+                variable_names_6.extend(['{}_Dike Investment Costs {}'.format(dike, n)])
+                variable_names_6.extend(['{}_Expected Number of Deaths {}'.format(dike, n)])
+            variable_names_5.extend(['RfR Total Costs {}'.format(n)])
             variable_names_6.extend(['RfR Total Costs {}'.format(n)])       
             variable_names_6.extend(['Expected Evacuation Costs {}'.format(n)])
-            variable_names_6.extend(['{}_Expected Number of Deaths {}'.format(dike, n)
-                                         for dike in function.dikelist])
         
-        outcomes.append(ScalarOutcome('Ring1/2__Expected Annual Damage',
+        outcomes.append(ScalarOutcome('Ring1/2_Expected Annual Damage',
                           variable_name=[var for var in variable_names_1],
                           function=sum_over, kind=direction))
-        outcomes.append(ScalarOutcome('Ring1/2__Expected Number of Deaths',
+        outcomes.append(ScalarOutcome('Ring1/2_Expected Number of Deaths',
                           variable_name=[var for var in variable_names_2],
                           function=sum_over, kind=direction))
-        outcomes.append(ScalarOutcome('Ring3__Expected Annual Damage',
+        outcomes.append(ScalarOutcome('Ring3_Expected Annual Damage',
                           variable_name=[var for var in variable_names_3],
                           function=sum_over, kind=direction))
-        outcomes.append(ScalarOutcome('Ring3__Expected Number of Deaths',
+        outcomes.append(ScalarOutcome('Ring3_Expected Number of Deaths',
                           variable_name=[var for var in variable_names_4],
                           function=sum_over, kind=direction))
 

@@ -293,29 +293,29 @@ def get_model_for_problem_formulation(problem_formulation_id):
             variable_names_6.extend(['RfR Total Costs {}'.format(n)])       
             variable_names_6.extend(['Expected Evacuation Costs {}'.format(n)])
         
-        outcomes.append(ScalarOutcome('Ring1/2_Expected Annual Damage',
+        outcomes.append(ScalarOutcome('A1/2_EAD', #Expected Annual Cost
                           variable_name=[var for var in variable_names_1],
-                          function=sum_over, kind=direction))
-        outcomes.append(ScalarOutcome('Ring1/2_Expected Number of Deaths',
+                          function=sum_over, kind=ScalarOutcome.MINIMIZE))
+        outcomes.append(ScalarOutcome('A1/2_END', #Expected Number of Deaths
                           variable_name=[var for var in variable_names_2],
-                          function=sum_over, kind=direction))
-        outcomes.append(ScalarOutcome('Ring3_Expected Annual Damage',
+                          function=sum_over, kind=ScalarOutcome.MINIMIZE))
+        outcomes.append(ScalarOutcome('A3_EAD', #Expected Annual Cost
                           variable_name=[var for var in variable_names_3],
-                          function=sum_over, kind=direction))
-        outcomes.append(ScalarOutcome('Ring3_Expected Number of Deaths',
+                          function=sum_over, kind=ScalarOutcome.MINIMIZE))
+        outcomes.append(ScalarOutcome('A3_END', #Expected Number of Deaths
                           variable_name=[var for var in variable_names_4],
-                          function=sum_over, kind=direction))
+                          function=sum_over, kind=ScalarOutcome.MINIMIZE))
 
-        outcomes.append(ScalarOutcome('Gelderland Total Investment Costs',
+        outcomes.append(ScalarOutcome('G_TIC', #Gelderland Total Investment Cost
                           variable_name=[var for var in variable_names_5],
-                          function=sum_over, kind=direction))
-        outcomes.append(ScalarOutcome('Expected Evacuation Costs', 
+                          function=sum_over, kind=ScalarOutcome.MINIMIZE))
+        outcomes.append(ScalarOutcome('EEC', #Expected Evacuation Cost
                                       variable_name=['Expected Evacuation Costs {}'.format(n
                                                      ) for n in function.planning_steps],
-                                          function=sum_over, kind=direction))
-        outcomes.append(ScalarOutcome('Total all costs',
+                                          function=sum_over, kind=ScalarOutcome.MINIMIZE))
+        outcomes.append(ScalarOutcome('TAC', #Total All Costs
                           variable_name=[var for var in variable_names_6],
-                          function=sum_over, kind=direction))
+                          function=sum_over, kind=ScalarOutcome.MINIMIZE))
 
         dike_model.outcomes = outcomes 
     

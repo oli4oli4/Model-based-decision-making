@@ -25,7 +25,7 @@ def get_model_for_problem_formulation(problem_formulation_id):
     # Specify uncertainties range:
     Real_uncert = {'Bmax': [30, 350], 'pfail': [0, 1]}  # m and [.]
     # breach growth rate [m/day]
-    cat_uncert_loc = {'Brate': (1., 1.5, 10)}
+    cat_uncert_loc = {'Brate': (1, 1.5, 10)}
 
     cat_uncert = {'discount rate {}'.format(n): (1.5, 2.5, 3.5, 4.5)
                     for n in function.planning_steps}
@@ -284,8 +284,9 @@ def get_model_for_problem_formulation(problem_formulation_id):
             for dike in function.ring3_dikelist:
                 variable_names_3.extend(['{}_Expected Annual Damage {}'.format(dike, n)])
                 variable_names_4.extend(['{}_Expected Number of Deaths {}'.format(dike, n)])            
-            for dike in function.dikelist:
+            for dike in function.gelderland_dikelist:
                 variable_names_5.extend(['{}_Dike Investment Costs {}'.format(dike, n)])
+            for dike in function.dikelist:
                 variable_names_6.extend(['{}_Expected Annual Damage {}'.format(dike, n)])
                 variable_names_6.extend(['{}_Dike Investment Costs {}'.format(dike, n)])
                 variable_names_6.extend(['{}_Expected Number of Deaths {}'.format(dike, n)])

@@ -275,7 +275,6 @@ def get_model_for_problem_formulation(problem_formulation_id):
         variable_names_3 = []
         variable_names_4 = []
         variable_names_5 = []
-        variable_names_6 = []
         
         for n in function.planning_steps:
             for dike in function.ring12_dikelist:
@@ -286,13 +285,7 @@ def get_model_for_problem_formulation(problem_formulation_id):
                 variable_names_4.extend(['{}_Expected Number of Deaths {}'.format(dike, n)])            
             for dike in function.gelderland_dikelist:
                 variable_names_5.extend(['{}_Dike Investment Costs {}'.format(dike, n)])
-            for dike in function.dikelist:
-                variable_names_6.extend(['{}_Expected Annual Damage {}'.format(dike, n)])
-                variable_names_6.extend(['{}_Dike Investment Costs {}'.format(dike, n)])
-                variable_names_6.extend(['{}_Expected Number of Deaths {}'.format(dike, n)])
             variable_names_5.extend(['RfR Total Costs {}'.format(n)])
-            variable_names_6.extend(['RfR Total Costs {}'.format(n)])       
-            variable_names_6.extend(['Expected Evacuation Costs {}'.format(n)])
         
         outcomes.append(ScalarOutcome('A1/2_EAD', #Expected Annual Cost
                           variable_name=[var for var in variable_names_1],
@@ -314,12 +307,41 @@ def get_model_for_problem_formulation(problem_formulation_id):
                                       variable_name=['Expected Evacuation Costs {}'.format(n
                                                      ) for n in function.planning_steps],
                                           function=sum_over, kind=ScalarOutcome.MINIMIZE))
-        outcomes.append(ScalarOutcome('TAC', #Total All Costs
-                          variable_name=[var for var in variable_names_6],
-                          function=sum_over, kind=ScalarOutcome.MINIMIZE))
 
         dike_model.outcomes = outcomes 
     
+    elif problem_formulation_id == 7:
+        outcomes = []
+        
+        variable_names_1 = []
+        variable_names_2 = []
+        variable_names_3 = []
+        variable_names_4 = []
+        
+        for n in function.planning_steps:
+            for dike in function.dikelist:
+                variable_names_1.extend(['{}_Expected Annual Damage {}'.format(dike, n)])
+                variable_names_2.extend(['{}_Expected Number of Deaths {}'.format(dike, n)])
+                variable_names_4.extend(['{}_Dike Investment Costs {}'.format(dike, n)])
+#             variable_names_3.extend(['Expected Evacuation Costs {}'.format(n)])
+            variable_names_4.extend(['RfR Total Costs {}'.format(n)])
+        
+        outcomes.append(ScalarOutcome('EAD', #Expected Annual Cost
+                          variable_name=[var for var in variable_names_1],
+                          function=sum_over, kind=ScalarOutcome.MINIMIZE))
+        outcomes.append(ScalarOutcome('END', #Expected Number of Deaths
+                          variable_name=[var for var in variable_names_2],
+                          function=sum_over, kind=ScalarOutcome.MINIMIZE))
+
+        outcomes.append(ScalarOutcome('TIC', #Expected Number of Deaths
+                          variable_name=[var for var in variable_names_4],
+                          function=sum_over, kind=ScalarOutcome.MINIMIZE))
+        outcomes.append(ScalarOutcome('EEC', #Expected Evacuation Cost
+                                      variable_name=['Expected Evacuation Costs {}'.format(n
+                                                     ) for n in function.planning_steps],
+                                          function=sum_over, kind=ScalarOutcome.MINIMIZE))
+
+        dike_model.outcomes = outcomes 
     
     else:
         raise TypeError('unknownx identifier')

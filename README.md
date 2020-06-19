@@ -49,4 +49,4 @@ Olivier Herlé
 Wessel Groot
 
 ## Acknowledgements
-We want to thank Irene for her guidance during the feedback meetings and we want to thank Jan and Simon for successfully setting up this course online.
+We want to thank Irene for her guidance during the feedback meetings and we want to thank Jan and Simon for successfully setting up this course online. It has been very insightful into the practicalities of policy advice.

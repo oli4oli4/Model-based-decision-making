@@ -1,6 +1,6 @@
 # Policy Advice for The Province of Gelderland in flood risk management
 
-This is an analysis of flood risk of the Ijssel RIver for the Province of Gelderland in the Netherlands in the context of the course EPA1361 Model-Based Decision-Making from the TU Delft.
+This is an analysis of flood risk of the Ijssel River for the Province of Gelderland in the Netherlands in the context of the course EPA1361 Model-Based Decision-Making from the TU Delft.
 
 
 The folder 'Final Assignment Deliverables' contains the necessary files.

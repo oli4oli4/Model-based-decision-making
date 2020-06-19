@@ -5,20 +5,32 @@ This is an analysis of flood risk of the Ijssel RIver for the Province of Gelder
 
 The folder 'Final Assignment Deliverables' contains the necessary files.
 
-## Notebooks
+## Files
+
+### Notebooks
 The project's code is divided in three notebooks: 
 
 preliminary_exploration.ipynb
 
-preliminary_exploration.ipynb
+searching_and_evaluating_candidate_solutions.ipynb
 
 exploring_preferred_alternative.ipynb
 
+### .py files changed from original model
 
-## Export folder
+dike_model_function
+
+problem_formulation
 
 
-## Built with
+
+### Export folder
+
+
+### Images folder
+
+
+### Built with
 
 Python
 

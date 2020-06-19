@@ -9,7 +9,9 @@ The folder 'Final Assignment Deliverables' contains the necessary files.
 The project's code is divided in three notebooks: 
 
 preliminary_exploration.ipynb
+
 preliminary_exploration.ipynb
+
 exploring_preferred_alternative.ipynb
 
 
@@ -19,14 +21,17 @@ exploring_preferred_alternative.ipynb
 ## Built with
 
 Python
-JupyterLab
-EMA Workbench
+
+EMA Workbench (python library)
 
 ## Authors
 
 Elvira van Damme
+
 Maarten Berendschot
+
 Olivier Herlé
+
 Wessel Groot
 
 ## Acknowledgements
